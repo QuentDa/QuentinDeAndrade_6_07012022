@@ -2,9 +2,11 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -13,8 +15,23 @@
     </header>
     <main id="main">
       <div class="photograph-header">
+        <div>
+          <h1 id="photograph-name">Chargement du nom..</h1>
+          <p id="photograph-city">Ville du photographe</p>
+          <p id="slogan"> a rajouter</p>
+        </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <img id="picture" src="" alt="">
       </div>
+
+
+      <div id="">
+        <ul id="medias">
+          
+        </ul>
+      </div>
+
+
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -31,6 +48,9 @@
 				</form>
 			</div>
 		</div>
+    <script src="/scripts/factories/Image.js"></script>
+    <script src="/scripts/factories/Video.js"></script>
+    <script src="/scripts/factories/MediaFactory.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
   </body>

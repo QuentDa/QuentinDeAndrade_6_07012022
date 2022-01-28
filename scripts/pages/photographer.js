@@ -18,7 +18,7 @@ async function getPhotographer() {
 
     let photographes = await data.json();
 
-    //création de variables pour y stocker les données photographes et media
+    //création de variables vides pour y stocker les données photographes et media
     let dataPhotographe = null;
     let mediaPhotographe = [];
 
@@ -41,7 +41,25 @@ async function getPhotographer() {
 }
 
 async function init() {
-    await getPhotographer();
+    //on stock le return de la fonction ci dessus dans la variable dataPhotographe
+    let dataPhotographe = await getPhotographer();
+
+    //on reprend le chemin dans une variable, on utilise dataphotographe[0] car c'est un array suivi d'un . car on cible l'objet
+    const picture = `assets/photographers/${dataPhotographe[0].portrait}`;
+
+    //on récupère l'ID de l'html que l'on va écrire dynamiquement en JS
+    document.getElementById('photograph-name').innerHTML = dataPhotographe[0].name
+    document.getElementById('photograph-city').innerHTML = dataPhotographe[0].city + ' ' + dataPhotographe[0].country
+    document.getElementById('picture').setAttribute('src', picture) //const ci dessus
+    document.getElementById('slogan').innerHTML = dataPhotographe[0].tagline
+
+
+    dataPhotographe[1].forEach((mediaPhotographe) => {
+        let media = new MediaFactory(mediaPhotographe)
+        let mediaLi = document.createElement('li')
+        document.getElementById('medias').appendChild(media.getCardDom())
+    })
+    
 }
 
 init();

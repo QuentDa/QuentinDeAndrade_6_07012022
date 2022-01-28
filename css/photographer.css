@@ -6,6 +6,43 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+}
+
+#photograph-name{
+    font-size: 55px;
+    color: rgb(255, 113, 30);
+}
+#photograph-city{
+    font-size: 24px;
+    color: #901C1C;
+}
+
+#picture{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+#medias{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+}
+#medias li{
+    text-align: center;
+    list-style: none;
+    flex: 0 0 33.333333%;
+    padding-bottom: 40px;
+}
+#medias img{
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .contact_button {
