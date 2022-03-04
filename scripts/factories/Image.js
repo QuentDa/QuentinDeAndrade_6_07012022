@@ -14,7 +14,9 @@ class Image {
         cardWrapper.classList.add('card-wrapper')
 
         const photographPicture = document.createElement( 'img' );
+        photographPicture.classList.add('photo')
         photographPicture.setAttribute('src', 'assets/photographers/'+this.mediaImage);
+        photographPicture.setAttribute('alt', this.title)
 
         const pictureTitle = document.createElement('h2');
         pictureTitle.innerHTML = this.title;
@@ -28,6 +30,7 @@ class Image {
         pictureLikes.addEventListener('click', () => {
             this.likes++
             pictureLikes.innerHTML = this.likes + '<i class="fas fa-heart"></i>'
+            document.getElementById('totalLikes').innerHTML = parseInt(document.getElementById('totalLikes').innerHTML) + 1
         })
 
         elementLi.appendChild(photographPicture)
@@ -35,8 +38,25 @@ class Image {
         elementLi.appendChild(cardWrapper)
         cardWrapper.appendChild(pictureTitle)
         cardWrapper.appendChild(pictureLikes)
+
+
+
+        photographPicture.addEventListener('click', () => {
+          Lightbox.init(this.id)  
+        })
        
 
         return elementLi; 
+    }
+
+
+    //créer getLightboxDOM COMME GETCARDOM
+    getLightboxDOM() {
+        let createImg = document.createElement('img');
+        createImg.classList.add('photoLightbox')
+        createImg.setAttribute('src', 'assets/photographers/'+this.mediaImage);
+        createImg.setAttribute('alt', this.title)
+        
+        return createImg
     }
 }

@@ -14,7 +14,7 @@
 
 #photograph-name{
     font-size: 55px;
-    color: rgb(255, 113, 30);
+    color: #C24700;
 }
 #photograph-city{
     font-size: 24px;
@@ -38,12 +38,55 @@
     flex: 0 0 33.333333%;
     padding-bottom: 40px;
 }
-#medias img{
+#medias img, #medias video{
     width: 500px;
     height: 500px;
     object-fit: cover;
     border-radius: 10px;
 }
+
+.card-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    padding-left: 100px;
+}
+.card-wrapper{
+    color: #901C1C;    
+}
+.card-wrapper h2{
+    margin-top: 0;
+    font-weight: 300;
+    font-size: 31px;
+}
+#likes{
+    margin-top: 5px;
+    font-size: 22px;
+}
+.fa-heart{
+    margin-left: 5px;
+}
+
+
+#likesPrice{
+    position: -webkit-sticky; /* Safari */  
+    position: sticky;
+    bottom: 0;
+    width: 300px;
+    height: 50px;
+    background-color: #e08c74;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    left: 85%;
+}
+#likesPrice span{
+    padding: 0 20px;
+    font-size: 18px;
+}
+
+
 
 .contact_button {
     font-size: 20px;
@@ -56,6 +99,23 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+.bground {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.377);
+  }
+
+#contact_modal{
+    position: absolute;
+    top: 10%;
+    width: 100%;
 }
 
 .modal {
@@ -94,7 +154,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 31px;
 }
 
 form div {
@@ -107,7 +167,94 @@ form div {
 
 form input {
     width: 100%;
-    height: 68px;
+    height: 48px;
     border: none;
     border-radius: 5px;
+}
+form textarea {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+.errorDiv{
+    margin-bottom: 0;
+    color: rgb(255, 217, 0);
+    font-weight: 600;
+    text-shadow: 2px 2px 3px rgba(101, 103, 114, 0.575);
+}
+
+#filters {
+    display: flex;   
+}
+
+.filter-box{
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+}
+
+
+.lightbox{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.637);
+}
+.lightbox-container{
+    position: absolute;
+    margin-top: 60px;
+    width: 90%;
+    height: 80%;
+    background: #fff;
+}
+.lightbox-wrapper{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.closeLightbox{
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    z-index: 2;
+    cursor: pointer;
+    filter: invert(93%) sepia(95%) saturate(4601%) hue-rotate(353deg) brightness(91%) contrast(124%);
+}
+.photo-wrapper{
+    height: 100%;
+}
+.photoLightbox{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+#left{
+    font-size: 80px;
+    position: absolute;
+    top: 40%;
+    left: 1%;
+    cursor: pointer;
+    color: #901C1C;
+    font-weight: 600;
+}
+#right{
+    font-size: 80px;
+    position: absolute;
+    right: 1%;
+    top: 40%;
+    cursor: pointer;
+    font-weight: 600;
+    color: #901C1C;
+}
+
+.videoDOM{
+   pointer-events: none;
 }
