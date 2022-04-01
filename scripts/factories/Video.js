@@ -39,12 +39,21 @@ class Video {
 
         elementLi.appendChild(photographVideo).appendChild(photographVideoSource)
         elementLi.appendChild(cardWrapper)
+        //priorité pour TAB
+        elementLi.setAttribute('tabindex', 0)
+
         cardWrapper.appendChild(videoTitle)
         cardWrapper.appendChild(videoLikes)
 
         elementLi.addEventListener('click', () => {
             Lightbox.init(this.id)  
           })
+
+        elementLi.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                Lightbox.init(this.id)
+            }
+        })
 
         return elementLi
     }

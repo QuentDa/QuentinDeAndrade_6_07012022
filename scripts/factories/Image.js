@@ -34,6 +34,7 @@ class Image {
         })
 
         elementLi.appendChild(photographPicture)
+        elementLi.setAttribute('tabindex', 0)
 
         elementLi.appendChild(cardWrapper)
         cardWrapper.appendChild(pictureTitle)
@@ -43,6 +44,13 @@ class Image {
 
         photographPicture.addEventListener('click', () => {
           Lightbox.init(this.id)  
+        })
+
+        elementLi.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                Lightbox.init(this.id)
+                
+            }
         })
        
 

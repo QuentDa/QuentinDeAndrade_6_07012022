@@ -11,7 +11,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" alt="Logo"/>
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Logo"/></a>
     </header>
     <main id="main">
 
@@ -29,24 +29,26 @@
       <!-- les medias qui sont gérés dans image.js et video.js et dans mediafactory.js -->
       <div id="filters">
         <!-- label sans inbut n'est pas recommandé pour l'accessibilité -->
-        <p aria-label="filter">Trier par</p> 
-        <div class="filter-box">
-          <span>dynamique</span>
-          <span id="popularity">Popularité</span>
-          <span id="date">Date</span>
-          <span id="title">Titre</span>
+        <p aria-label="filter" class="filter">Trier par</p> 
+        <div class="filter-box" tabindex="0">
+          <span id="dynamic">Non trié</span>
+          <div class="filter-container">
+            <span id="popularity">Popularité</span>
+            <span id="date">Date</span>
+            <span id="title">Titre</span>
+          </div>
         </div>
       </div>
 
 
-      <div>
+      <div id="photoMedias">
         <ul id="medias">
           
         </ul>
       </div>
 
       <div id="likesPrice">
-        <span id="totalLikes"></span><i class="fas fa-heart"></i>
+        <div><span id="totalLikes"></span><i class="fas fa-heart"></i></div>
         <span id="price"></span>
       </div>
 

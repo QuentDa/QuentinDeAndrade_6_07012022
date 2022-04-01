@@ -74,23 +74,31 @@ async function init() {
 
 }
 
+const dynamic = document.getElementById('dynamic')
+const filters = document.querySelector('.filter-container')
+
 const popularity = document.getElementById('popularity')
 let orderPopularity = true;
 
-function filterPopularity() {
+function filterPopularity(reorder = true) {
 
     document.getElementById('medias').innerHTML = ''
 
     mediaPhotographes.sort((a, b) => {
         return orderPopularity ? b.likes - a.likes : a.likes - b.likes
     })
-    orderPopularity = !orderPopularity
+    if (reorder) {
+        orderPopularity = !orderPopularity
+    }
+    
 
     mediaPhotographes.forEach(media => {
         let mediaDOM = new MediaFactory(media)
-        let mediaLi = document.createElement('li')
         document.getElementById('medias').appendChild(mediaDOM.getCardDom())
     })
+
+    dynamic.innerHTML = 'Popularité'
+    filters.style.display = 'none'
 }
 popularity.addEventListener('click', filterPopularity)
 
@@ -99,7 +107,7 @@ const date = document.getElementById('date')
 let orderDate = true;
 
 //AU PASSAGE LE 30 FEVRIER N'EXISTE PAS ET CA ME FAISAIT UNE ERREUR QUAND JE VOULAIS FILTRER PAR DATE :))))))
-function filterDate() {
+function filterDate(reorder = true) {
 
 
     document.getElementById('medias').innerHTML = ''
@@ -107,20 +115,25 @@ function filterDate() {
     mediaPhotographes.sort((a, b) => {
         return orderDate ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date)
     })
-    orderDate = !orderDate
+    if (reorder) {
+        orderDate = !orderDate
+    }
+    
     console.log(mediaPhotographes)
     mediaPhotographes.forEach(media => {
         let mediaDOM = new MediaFactory(media)
-        let mediaLi = document.createElement('li')
         document.getElementById('medias').appendChild(mediaDOM.getCardDom())
     })
+
+    dynamic.innerHTML = 'Date'
+    filters.style.display = 'none'
 }
 date.addEventListener('click', filterDate)
 
 const title = document.getElementById('title')
 let orderTitle = true;
 
-function filterTitle() {
+function filterTitle(reorder = true) {
     console.log('je rentre dans le titre')
 
     document.getElementById('medias').innerHTML = ''
@@ -128,19 +141,45 @@ function filterTitle() {
     mediaPhotographes.sort((a, b) => {
         return orderTitle ? b.title.localeCompare(a.title) : a.title.localeCompare(b.title) //localeCompare compare alphabétiquement
     })
-    orderTitle = !orderTitle
+    if (reorder){
+        orderTitle = !orderTitle
+    }
 
     mediaPhotographes.forEach(media => {
         let mediaDOM = new MediaFactory(media)
-        let mediaLi = document.createElement('li')
         document.getElementById('medias').appendChild(mediaDOM.getCardDom())
     })
     
+    dynamic.innerHTML = 'Titre'
+    filters.style.display = 'none'
 }
 title.addEventListener('click', filterTitle)
 
 
+dynamic.addEventListener('click', () => {
+    filters.style.display = 'flex'
+})
 
+const filterBox = document.querySelector('.filter-box')
+// -1 pour commencer sur le non filtré
+let count = -1
+
+filterBox.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        //modulo 3 pour reset au popularité et non non filtré
+        count = (count + 1) % 3
+
+        switch (count) {
+            //false permet de ne pas retrier croissant/decroissant pour un soucis d'UX
+            case 0 : this.filterPopularity(false)
+            break;
+            case 1 : this.filterDate(false)
+            break;
+            case 2 : this.filterTitle(false)
+            break;
+        }
+    } 
+})
 
 
 

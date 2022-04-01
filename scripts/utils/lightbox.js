@@ -65,6 +65,13 @@ class Lightbox {
                     document.querySelector('.photo-wrapper').appendChild(media.getLightboxDOM())
                 }
             })
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    lightboxModal.style.display = 'none'
+                    document.querySelector('.photo-wrapper').innerHTML = ''
+                }
+            })
         }
         
         Lightbox.alreadyInit = true

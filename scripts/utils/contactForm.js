@@ -13,6 +13,12 @@ function closeModal() {
     modalbg.style.display = "none";
     modal.style.display = "none";
 }
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal()
+    }
+})
+
 
 
 // DOM Elements
@@ -24,7 +30,7 @@ const message = document.querySelector("#message");
 const form = document.querySelector('form');
 
 // regex to verify email in case HTML5 doesn't work
-const checkEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const checkEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 //Création de fonction pour preventdefault le bouton submit
 form.addEventListener('submit', function (e){
